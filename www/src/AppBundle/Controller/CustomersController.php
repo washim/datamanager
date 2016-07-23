@@ -29,7 +29,7 @@ class CustomersController extends Controller
     {
 		$where = array();
 		$em = $this->get('doctrine.orm.entity_manager');
-		$dql = "SELECT c FROM AppBundle:Customers c";
+		$dql = "SELECT c FROM AppBundle:Customers c ORDER by c.id DESC";
 		foreach ($request->query->all() as $key => $value) {
 			if (!empty($key) && !empty($value))
 			$where[] = "c." . $key . "='$value'";

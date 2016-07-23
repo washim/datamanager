@@ -27,7 +27,7 @@ class GroupsController extends Controller
     {
         $where = array();
 		$em = $this->get('doctrine.orm.entity_manager');
-        $dql = "SELECT c FROM AppBundle:Groups c";
+        $dql = "SELECT c FROM AppBundle:Groups c ORDER by c.id DESC";
 		foreach ($request->query->all() as $key => $value) {
 			if (!empty($key) && !empty($value))
 			$where[] = "c." . $key . "='$value'";
