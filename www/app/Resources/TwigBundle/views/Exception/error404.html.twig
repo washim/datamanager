@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page not found{% endblock %}
+
+{% block page_title %}404<small>Page not found</small>{% endblock %}
+
+{% block body %}
+<div class="error-page">
+    <div class="error-content">
+        <h3><i class="fa fa-warning text-yellow"></i> Oops! Unable to handle this request.</h3>
+        <p>We could not found page which you were looking for. Meanwhile, you may 
+        <a href="{{ path('pages_index') }}">return to Home Page</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'fields.html.twig' %}
+{% block title %}EMI Add/Edit{% endblock %}
+{% block page_title %}EMI Add/Edit<small>Please provide valid EMI information below.</small>{% endblock %}
+
+{% block body %}
+<div class="row">
+	<div class="col-md-4">
+		<div class="box box-primary">
+		  <div class="box-header with-border">
+			<h3 class="box-title">Add/Edit EMI</h3>
+		  </div>
+		  {{form_start(form)}}
+		  <div class="box-body">
+		  	{{form_widget(form)}}
+		  </div>
+		  <div class="box-footer">
+			<input type="submit" value="Save" class="btn btn-primary"/>
+		  </div>
+		  {{form_end(form)}}
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Customer Profile{% endblock %}
+
+{% block page_title %}Customer Profile<small>All details belongs to customer will show here.</small>{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-md-3">
+			<!-- Profile Image -->
+			<div class="box box-primary">
+                <div class="box-body box-profile">
+				  {% set pic = asset('uploads/documents/')~customer.path %}
+                  <img class="profile-user-img img-responsive img-circle" src="{% if customer.path is defined %}{{asset('customer_picture/' ~ customer.path)}}{% else %}{{asset('asset/img/nopic.png')}}{% endif %}" alt="User profile picture">
+                  <h3 class="profile-username text-center">{{ customer.name }}</h3>
+                  <p class="text-muted text-center"><strong>Book No:</strong> {{ customer.bookno }}<br><strong>Group Name:</strong> {{ customer.group.name }}</p>
+                  <ul class="list-group list-group-unbordered">
+                    <li class="list-group-item">
+                      <b><i class="fa fa-cogs" aria-hidden="true"></i> Total Purchased</b> <a class="pull-right"><span class="label label-success">{{ customer.ProductPrice }}</span></a>
+                    </li>
+                    <li class="list-group-item">
+                      <b><i class="fa fa-tree" aria-hidden="true"></i> Total Advance Paid</b> <a class="pull-right"><span class="label label-success">{{ customer.AdvancePaid }}</span></a>
+                    </li>
+                    <li class="list-group-item">
+                      <b><i class="fa fa-check" aria-hidden="true"></i> EMI Completed</b> <a class="pull-right"><span class="label label-success">{{ customer.completed }}</span></a>
+                    </li>
+                    <li class="list-group-item">
+                      <b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> EMI Pending</b> <a class="pull-right"><span class="label label-danger">{{ customer.pending }}</span></a>
+                    </li>
+                  </ul>
+                </div><!-- /.box-body -->
+            </div>
+			<!-- About Me Box -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+				  <h3 class="box-title">Personal Information</h3>
+				</div><!-- /.box-header -->
+				<div class="box-body">
+				  <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
+				  <p class="text-muted">{{ customer.address }}</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="nav-tabs-custom">
+				<ul class="nav nav-tabs">
+          <li class="active"><a href="#emis" data-toggle="tab" aria-expanded="true">EMI History</a></li>
+          <li class=""><a href="#products" data-toggle="tab" aria-expanded="false">Products</a></li>
+        </ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="emis">
+						<table class="table table-striped">
+							<tbody>
+								<tr>
+									<th style="width: 10px">#</th>
+									<th>Amount</th>
+									<th>Payment Date</th>
+									<th>Action</th>
+								</tr>
+								{% if customer.emis|length > 0 %}
+								{% for emi in customer.emis %}
+								<tr>
+									<td>{{ emi.id }}</td>
+									<td>{{ emi.amount }}</td>
+									<td>{{ emi.dueDt|date("d-m-Y") }}</td>
+									<td><a class="btn btn-xs btn-info" href="{{ path('emis_edit', { 'id': emi.id }) }}">Edit</a> <a class="btn btn-xs btn-info delete" href="{{ path('emis_delete', { 'id': emi.id }) }}">Delete</a></td>
+								</tr>
+								{% endfor %}
+								{% else %}
+								<tr>
+									<td colspan="4">No record found yet.</td>
+								</tr>
+								{% endif %}
+								<tr>
+									<td colspan="4"><a class="btn btn-xs btn-warning" href="{{path('emis_create', {'id':customer.id})}}">Add EMI for this Customer</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-pane" id="products">
+						<table class="table table-striped">
+							<tbody>
+								<tr>
+									<th>Product No</th>
+									<th>Product</th>
+									<th>Price</th>
+									<th>Advance Paid</th>
+									<th>Advance Paid Date</th>
+								</tr>
+								<tr>
+									<td>{{customer.ProductNo}}</td>
+									<td>{{customer.ProductName}}</td>
+									<td>{{customer.ProductPrice}}</td>
+									<td>{{customer.AdvancePaid}}</td>
+									<td>{{customer.AdvancePaidDate|date('d-m-Y')}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

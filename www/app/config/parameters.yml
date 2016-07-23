@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     datamanager
+    database_user:     root
+    database_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+    secret: 93649b8ce01bc68e233d31b358c37ef5ba2b50ac

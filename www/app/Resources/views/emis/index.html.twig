@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Emis list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cid</th>
+                <th>Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emi in emis %}
+            <tr>
+                <td><a href="{{ path('emis_show', { 'id': emi.id }) }}">{{ emi.id }}</a></td>
+                <td>{{ emi.cid }}</td>
+                <td>{{ emi.amount }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('emis_show', { 'id': emi.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('emis_edit', { 'id': emi.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('emis_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
