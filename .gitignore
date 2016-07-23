@@ -1,0 +1,8 @@
+core/*
+db_backup_restore/*
+docs/*
+home/*
+htpasswd/*
+ssl/*
+utils/*
+datamanager.exe
