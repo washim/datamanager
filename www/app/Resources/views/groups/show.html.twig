@@ -62,6 +62,7 @@
 									<th>Adv Paid</th>
 									<th>Paid</th>
 									<th>Pending</th>
+									<th>EMI</th>
 									<th>Action</th>
 								</tr>
 								{% if group.customers|length > 0 %}
@@ -74,6 +75,7 @@
 								  <td>{{ customer.AdvancePaid }}</td>
 								  <td>{{ customer.completed }}</td>
 								  <td>{{ customer.pending }}</td>
+								  <td>{{ customer.emiAmount }}</td>
 								  <td>
 								  	<div class="btn-group">
 									  <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
