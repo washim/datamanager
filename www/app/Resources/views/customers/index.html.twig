@@ -70,7 +70,6 @@
 										    Action <span class="caret"></span>
 										  </button>
 										  <ul class="dropdown-menu dropdown-menu-right">
-										    <li><a href="{{ path('customers_show', { 'id': customer.id }) }}">Show</a></li>
 										    <li><a href="{{ path('emis_create', { 'id': customer.id }) }}">Add EMI</a></li>
 										    <li><a href="{{path('customers_edit', {'id':customer.id})}}">Edit</a></li>
 										    <li><a class="delete" href="{{ path('customers_normal_delete', { 'id': customer.id }) }}">Delete</a></li>
