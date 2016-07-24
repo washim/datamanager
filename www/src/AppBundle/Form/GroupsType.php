@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class GroupsType extends AbstractType
@@ -21,6 +22,19 @@ class GroupsType extends AbstractType
             ->add('address')
             ->add('LeaderName')
             ->add('mobile', TextType::class, ['required' => false])
+            ->add('day', ChoiceType::class, [
+                'choices' => [
+                    'monday' => 'monday',
+                    'tuesday' => 'tuesday',
+                    'wednesday' => 'wednesday',
+                    'thursday'=> 'thursday',
+                    'friday' => 'friday',
+                    'saturday' => 'saturday',
+                    'sunday' => 'sunday'
+                ],
+                'label' => 'Collection Day',
+                'placeholder' => 'Choose collection day'
+            ])
         ;
     }
     

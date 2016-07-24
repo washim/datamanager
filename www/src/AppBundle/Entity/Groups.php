@@ -47,7 +47,7 @@ class Groups
 	 private $mobile;
 	 
 	/**
-     * @ORM\Column(type="string", length=64, nullable=true)
+     * @ORM\Column(type="text")
      */
 	 private $day;
      

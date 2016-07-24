@@ -27,14 +27,17 @@ class GroupsController extends Controller
     {
         $where = array();
 		$em = $this->get('doctrine.orm.entity_manager');
-        $dql = "SELECT c FROM AppBundle:Groups c ORDER by c.id DESC";
+        $dql = "SELECT c FROM AppBundle:Groups c";
 		foreach ($request->query->all() as $key => $value) {
 			if (!empty($key) && !empty($value))
 			$where[] = "c." . $key . "='$value'";
 		}
 		if (count($where) > 0) {
-			$where = " WHERE " . implode(' AND ', $where);
+			$where = " WHERE " . implode(' AND ', $where) . " ORDER BY c.id DESC";
 			$dql .= $where;
+		}
+		else {
+		    $dql .= " ORDER BY c.id DESC";
 		}
         $query = $em->createQuery($dql);
         
