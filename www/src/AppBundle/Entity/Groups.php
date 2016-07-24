@@ -45,6 +45,11 @@ class Groups
      * @ORM\Column(type="string", length=12, nullable=true)
      */
 	 private $mobile;
+	 
+	/**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+	 private $day;
      
     /**
      * Varibales for custom logi and this will not store in database.
@@ -166,5 +171,17 @@ class Groups
         }
         $balance = $balance - $this->getCompleted() - $this->getAdvance();
         return $balance;
+	}
+	
+	public function setDay($day)
+	{
+	    $this->day = $day;
+	    
+	    return $this;
+	}
+	
+	public function getDay()
+	{
+	    return $this->day;
 	}
 }
